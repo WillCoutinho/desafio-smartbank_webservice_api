@@ -10,7 +10,7 @@ Então assim posso manipular o cadastro dos mesmos
     Dado o endereço da API para criar funcionário
      E os dados do funcionário
      Quando eu faço uma requisição POST com os dados do novo funcionário
-     Então a API deve retornar os dados cadastrados com o código "201"
+     Então a API deve retornar o código "200" com os dados cadastrados
 
   Cenário: Validar cadastro do funcionário criado
     Dado o endereço da API para pegar um cadastro

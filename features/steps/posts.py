@@ -1,12 +1,10 @@
 from behave import given, when, then
 import features.src.posts_handler as handler
 
-url = 'https://jsonplaceholder.typicode.com/posts/'
-
 
 @given(u'o endereço da API do JSON PlaceHolder para criar um post')
 def step_impl(context):
-    context.url = url
+    pass
 
 
 @given(u'os dados deste post')
@@ -17,7 +15,7 @@ def step_impl(context):
 
 @when(u'eu faço uma requisição POST com os dados do novo post')
 def step_impl(context):
-    context.resposta = handler.criar_post(url, context.dados)
+    context.resposta = handler.criar_post(context.dados)
     assert context.resposta is not None
 
 
@@ -28,18 +26,19 @@ def step_impl(context):
 
 @given(u'o endereço da API do JSON PlaceHolder para consultar um post')
 def step_impl(context):
-    context.url = url
+    pass
 
 
 @given(u'o id do post criado')
 def step_impl(context):
-    context.id = 99
-    #  ID viria do Post criado anteriormente, mas a plataforma utilizada não realiza ações de POST/PUT/DELETE
+    context.post_criado = handler.get_ultimo_post_add()
+    context.id = context.post_criado['id']
+    assert context.post_criado is not None
 
 
 @when(u'eu faço uma requisição GET com o id do post')
 def step_impl(context):
-    context.resposta = handler.retornar_post_por_id(url, context.id)
+    context.resposta = handler.retornar_post_por_id(context.id)
     assert context.resposta is not None
 
 
@@ -51,16 +50,19 @@ def step_impl(context):
 @then(u'os dados devem ser os mesmos do post criado anteriormente')
 def step_impl(context):
     assert context.id == context.resposta.json()['id']
+    assert context.post_criado['title'] == context.resposta.json()['title']
 
 
 @given(u'o endereço da API do JSON PlaceHolder para excluir um post')
 def step_impl(context):
-    context.url = url
+    pass
 
 
 @when(u'eu faço uma requisição DELETE com o id do post')
 def step_impl(context):
-    context.resposta = handler.deletar_post(url, context.id)
+    context.post_criado = handler.get_ultimo_post_add()
+    context.id = context.post_criado['id']
+    context.resposta = handler.deletar_post(context.id)
     assert context.resposta is not None
 
 
