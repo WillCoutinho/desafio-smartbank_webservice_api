@@ -12,7 +12,7 @@ url = 'https://jsonplaceholder.typicode.com/posts/'
 
 def criar_post(dados):
     try:
-        resposta = requests.post(url, data=dados, headers=headers)
+        resposta = requests.post(url_criar_post(), data=dados, headers=headers)
         return resposta.status_code
     except Exception as e:
         print(e)
@@ -20,16 +20,16 @@ def criar_post(dados):
 
 def deletar_post(id):
     try:
-        resposta = requests.delete(url + str(id), headers=headers)
+        resposta = requests.delete(url_deletar_post(id), headers=headers)
         return resposta.status_code
     except Exception as e:
         print(e)
         return False
 
 
-def validar_status_POST(atual):
+def validar_status_POST(status):
     try:
-        if atual == 201:
+        if status == 201:
             return True
         else:
             return False
@@ -38,9 +38,9 @@ def validar_status_POST(atual):
         return False
 
 
-def validar_status_DELETE(atual):
+def validar_status_DELETE(status):
     try:
-        if atual == 200:
+        if status == 200:
             return True
         else:
             return False
@@ -49,9 +49,9 @@ def validar_status_DELETE(atual):
         return False
 
 
-def validar_status_GET(atual):
+def validar_status_GET(status):
     try:
-        if atual == 200:
+        if status == 200:
             return True
         else:
             return False
@@ -62,7 +62,7 @@ def validar_status_GET(atual):
 
 def retornar_post_por_id(id):
     try:
-        resposta = requests.get(url + str(id))
+        resposta = requests.get(url_get_post(id), headers=headers)
         return resposta
     except Exception as e:
         print(e)
@@ -93,6 +93,18 @@ def post_id(post_criado):
     except Exception as e:
         print(e)
         return False
+
+
+def url_criar_post():
+    return url
+
+
+def url_get_post(id='1'):
+    return url + str(id)
+
+
+def url_deletar_post(id='1'):
+    return url + str(id)
 
 
 def dados_post():

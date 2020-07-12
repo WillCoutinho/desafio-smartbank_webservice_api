@@ -69,7 +69,6 @@ def checar_dados(funcionario_criado, resposta):
 def status_funcionario_criado(funcionario_criado):
     try:
         funcionario = funcionario_criado.json()['data']
-        
         if funcionario['id'] is not None:
             return True
         else:
@@ -99,11 +98,11 @@ def url_criar_funcionario():
     return url_post
 
 
-def url_get_funcionario(id):
+def url_get_funcionario(id='1'):
     return url_get_by_id + str(id)
 
 
-def url_deletar_funcionario(id):
+def url_deletar_funcionario(id='1'):
     return url_delete + str(id)
 
 
@@ -142,9 +141,14 @@ def validar_status_GET(status_retornado):
 
 
 def dados_funcionario():
+    # funcionario = {
+    #     'name': fake.name(),
+    #     'salary': fake.random_int(1000, 250000),
+    #     'age': fake.random_int(18, 65)
+    # }
     funcionario = {
-        'name': fake.name(),
-        'salary': fake.random_int(1000, 250000),
-        'age': fake.random_int(18, 65)
+        "name": "Tester ABC",
+        "salary": "0000",
+        "age": "20",
     }
     return funcionario
