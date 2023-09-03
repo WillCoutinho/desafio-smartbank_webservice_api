@@ -54,7 +54,7 @@ configurado corretamente.
 ### Git Clone e Instalação das Libs
 
 Crie uma pasta com o nome e no diretório que quiser (para clonar o repositório).\
-Clone o repositório do [Desafio 1 - API](https://gitlab.com/Coutinho_W/desafio-smartbank_webservice_api) e entre na pasta clonada.
+Clone o repositório do [Desafio 1 - API](https://github.com/WillCoutinho/desafio-smartbank_webservice_api) e entre na pasta clonada.
 
 Instale a lib ``pipenv`` com o comando: ``pip install pipenv``\
 E instale as dependências pelo ``Pipfile`` (que está no diretório raiz clonado) com o comando: ``pipenv install``\
@@ -81,7 +81,7 @@ Pronto, relatório dos testes de API disponíveis no browser.
 ##
 #### Repositório Git
 
-GitLab: [*Desafio 1 - API (Smartbank)*](https://gitlab.com/Coutinho_W/desafio-smartbank_webservice_api) 
+GitLab: [*Desafio 1 - API (Smartbank)*](https://github.com/WillCoutinho/desafio-smartbank_webservice_api) 
 
 ##
 #### Libs utilizadas
